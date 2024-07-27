@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IconChevronDown, IconFileSpreadsheet } from "@tabler/icons-react";
 import { DonutChart } from "./DonutChart";
 import { HealthForm } from "../HealthForm";
@@ -8,7 +8,12 @@ export function HealthDetails() {
   const data = useSelector((state) => state.nutrition.userData);
   const [isDrop, setDrop] = useState(false);
   const [isOpenForm, setOpenForm] = useState(false);
-  const [formResolved, setFormResolved] = useState(Object.keys(data).length > 0);
+  const [formResolved, setFormResolved] = useState(false);
+
+  useEffect(() => {
+    setFormResolved(Object.keys(data).length > 0);
+  }, [data]);
+
   const handleSetDrop = () => {
     setDrop(!isDrop);
   };

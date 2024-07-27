@@ -65,7 +65,7 @@ export function ListNotes({ setType, setSeeNotes, setNote }) {
       </div>
       <div>
         {notes.length > 0 ? (
-          <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(250px,_1fr))] overflow-auto">
+          <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(250px,_1fr))] overflow-auto xl:h-[80vh]">
             {filteredNotes.map((note) => (
               <NoteCard
                 key={note.id}

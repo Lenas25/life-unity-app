@@ -193,7 +193,7 @@ export function AddEditTaskModal({
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             id="task-description-input"
-            className="outline-none min-h-[75px] rounded-md text-sm border-gray-600 focus:ring-0 focus:border-gray-600"
+            className="outline-none min-h-[75px] rounded-md text-sm placeholder:text-sm border-gray-600 focus:ring-0 focus:border-gray-600"
             placeholder="e.g. Siempre es bueno tomar un descanso de 15 minutos asi recargare un poco las baterías."
           />
         </div>

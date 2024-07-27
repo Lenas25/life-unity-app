@@ -19,6 +19,7 @@ export function KanbanPersonal() {
       dispatch(changeActive(0));
     }
   }, [boards, dispatch, idActiveBoard]);
+  
   useEffect(() => {
     setLoading(true);
     dispatch(fetchBoards());

@@ -92,7 +92,7 @@ export function ViewNotes({ type, setSeeNotes, note }) {
             )}
           </div>
           <input
-            className="text-xl md:text-3xl font-semibold placeholder:text-gray-400 focus:outline-none focus:ring-0 w-full py-2"
+            className="text-xl md:text-3xl font-semibold placeholder:text-gray-400 focus:outline-none focus:ring-0 w-full xl:w-[200px] py-2"
             placeholder="Title of the note..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -113,7 +113,7 @@ export function ViewNotes({ type, setSeeNotes, note }) {
         </div>
       </div>
       <textarea
-        className="w-full font-medium text-primary h-[60vh] placeholder:text-gray-500 focus:outline-none focus:ring-0 resize-none overflow-auto border-none px-3 m-0"
+        className="w-full font-medium text-primary h-[60vh] placeholder:text-gray-500 focus:outline-none focus:ring-0 resize-none overflow-auto border-none px-3 m-0 text-md md:text-xl"
         placeholder="Write your note here..."
         value={content}
         onChange={(e) => setContent(e.target.value)}></textarea>
