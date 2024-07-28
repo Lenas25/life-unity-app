@@ -15,8 +15,10 @@ export default function ItemsFood({ food }) {
       !valuesRecommended?.carbs ||
       !valuesRecommended?.protein ||
       !valuesRecommended?.fat ||
-      !valuesRecommended?.cal
+      !valuesRecommended?.cals
     ) {
+      console.log(valuesRecommended);
+      console.log("No values recommended");
       setOpenItems([]);
       setInputValues({});
       return;
