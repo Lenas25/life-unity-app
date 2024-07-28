@@ -7,7 +7,11 @@ import {
 import Picker from "@emoji-mart/react";
 import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
-import { createNotes, deleteNotes, updateNotes } from "../../../../redux/slices/notesSlice";
+import {
+  createNotes,
+  deleteNotes,
+  updateNotes,
+} from "../../../../redux/slices/notesSlice";
 import { useDispatch } from "react-redux";
 import { obtenerInfoToken } from "../../../../utils";
 
@@ -29,15 +33,15 @@ export function ViewNotes({ type, setSeeNotes, note }) {
     setShowEmojiPicker(false);
   };
 
-  const validate=()=>{
-    if(!emojis || !title || !content){
+  const validate = () => {
+    if (!emojis || !title || !content) {
       return false;
     }
-    return true
-  }
+    return true;
+  };
 
   const saveNote = () => {
-    if(!validate()){
+    if (!validate()) {
       return;
     }
     if (type === "add") {
@@ -48,7 +52,7 @@ export function ViewNotes({ type, setSeeNotes, note }) {
     } else {
       const data = { emojis, title, content, color };
       const noteId = note.id;
-      dispatch(updateNotes({noteId, data}));
+      dispatch(updateNotes({ noteId, data }));
       setSeeNotes(true);
     }
   };
@@ -67,36 +71,42 @@ export function ViewNotes({ type, setSeeNotes, note }) {
           <IconArrowLeft />
         </button>
         <div className="flex gap-2">
-          <button className="text-white rounded-full bg-primary p-2 md:p-3" onClick={saveNote}>
+          <button
+            className="text-white rounded-full bg-primary p-2 md:p-3"
+            onClick={saveNote}>
             <IconDeviceFloppy />
           </button>
           {type === "edit" && (
-            <button className="text-white rounded-full bg-red-500 p-2 md:p-3" onClick={deleteNote}>
+            <button
+              className="text-white rounded-full bg-red-500 p-2 md:p-3"
+              onClick={deleteNote}>
               <IconTrash />
             </button>
           )}
         </div>
       </div>
-      <div className="py-4 md:p-5">
-        <div className="flex gap-2 md:gap-5 items-center">
-          <div className="relative">
-            <div
-              onClick={handleFocus}
-              className="cursor-pointer rounded-full size-5 md:size-10 border-gray-500 border-2 flex items-center justify-center text-xl md:text-3xl p-5">
-              {emojis}
-            </div>
-            {showEmojiPicker && (
-              <div className="absolute top-14">
-                <Picker onEmojiSelect={handleEmojiSelect} />
+      <div className="py-4 md:py-5">
+        <div className="flex gap-2 md:gap-5 items-center w-full justify-between">
+          <div className="flex gap-2">
+            <div className="relative">
+              <div
+                onClick={handleFocus}
+                className="cursor-pointer rounded-full size-5 md:size-10 border-gray-500 border-2 flex items-center justify-center text-xl md:text-3xl p-5">
+                {emojis}
               </div>
-            )}
+              {showEmojiPicker && (
+                <div className="absolute top-14">
+                  <Picker onEmojiSelect={handleEmojiSelect} />
+                </div>
+              )}
+            </div>
+            <input
+              className="text-xl font-semibold placeholder:text-gray-400 focus:outline-none focus:ring-0 w-full xl:w-[200px] py-2"
+              placeholder="Title of the note..."
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
-          <input
-            className="text-xl md:text-3xl font-semibold placeholder:text-gray-400 focus:outline-none focus:ring-0 w-full xl:w-[200px] py-2"
-            placeholder="Title of the note..."
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
           <div className="relative flex gap-2">
             <div
               className="size-6 rounded-full border"
@@ -112,8 +122,26 @@ export function ViewNotes({ type, setSeeNotes, note }) {
           </div>
         </div>
       </div>
+      <div>
+        {
+          [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ][new Date().getMonth()]
+        }{" "}{new Date().getDate()}, {new Date().getFullYear()}
+      </div>
       <textarea
-        className="w-full font-medium text-primary h-[60vh] placeholder:text-gray-500 focus:outline-none focus:ring-0 resize-none overflow-auto border-none px-3 m-0 text-md md:text-xl"
+        className="w-full font-medium text-primary h-[60vh] placeholder:text-gray-500 focus:outline-none focus:ring-0 resize-none overflow-auto border-none px-0 py-3 m-0 text-[16px]"
         placeholder="Write your note here..."
         value={content}
         onChange={(e) => setContent(e.target.value)}></textarea>

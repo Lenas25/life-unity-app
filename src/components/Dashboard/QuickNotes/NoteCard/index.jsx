@@ -41,21 +41,47 @@ export function NoteCard({ note, setSeeNotes, setType, setNote }) {
           {note.content}
         </p>
       </div>
-      <div className="flex gap-2 justify-end">
-        <button
-          className={` rounded-full p-2 md:p-3 ${
-            darkMode ? "bg-white text-primary" : "bg-primary text-white"
-          }`}
-          onClick={() => {
-            setType("edit");
-            setSeeNotes(false);
-            setNote(note);
-          }}>
-          <IconEdit />
-        </button>
-        <button className="text-white rounded-full bg-red-500 p-2 md:p-3">
-          <IconTrash onClick={deleteNote} />
-        </button>
+      <div className="flex gap-5 justify-between items-center">
+        <div className={`${darkMode ? "text-white" : "text-black"}`}>
+          {(() => {
+            if (!note?.created_at) return null;
+            const date = new Date(note.created_at);
+            const monthNames = [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ];
+            const day = date.getDate();
+            const month = monthNames[date.getMonth()];
+            const year = date.getFullYear();
+            return `${month} ${day}, ${year}`;
+          })()}{" "}
+        </div>
+        <div className="flex gap-2">
+          <button
+            className={` rounded-full p-2 md:p-3 ${
+              darkMode ? "bg-white text-primary" : "bg-primary text-white"
+            }`}
+            onClick={() => {
+              setType("edit");
+              setSeeNotes(false);
+              setNote(note);
+            }}>
+            <IconEdit />
+          </button>
+          <button className="text-white rounded-full bg-red-500 p-2 md:p-3">
+            <IconTrash onClick={deleteNote} />
+          </button>
+        </div>
       </div>
     </div>
   );
