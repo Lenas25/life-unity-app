@@ -63,7 +63,7 @@ export function HealthDetails() {
           </div>
 
           <div className="flex items-center gap-5 flex-col text-center">
-            <h3 className="font-primary">Height</h3>
+            <h3 className="font-primary">Weight</h3>
             <span className="text-[#F9A826] font-bold text-center text-2xl font-primary">
               {" "}
               {data.weight || "--"} kg{" "}

@@ -120,7 +120,7 @@ export const obtenerDatos = async (url) => {
 export const updateUser = async (data) => {
   const idByToken = obtenerInfoToken().user_id;
   const response = await fetch(
-    `${API_URL}${ENDPOINTS.USER}${idByToken}`,
+    `${API_URL}${ENDPOINTS.USER}${idByToken}/`,
     {
       method: "PUT",
       body: data,
